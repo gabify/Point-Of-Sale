@@ -48,5 +48,10 @@ namespace Point_Of_Sale.admin
         {
             refresh();
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            cat.updateCategory(txtCategory_name.Text, Convert.ToInt32(dgv_category.CurrentRow.Cells[0].Value));
+        }
     }
 }

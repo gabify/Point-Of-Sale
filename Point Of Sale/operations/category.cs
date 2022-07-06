@@ -42,13 +42,14 @@ namespace Point_Of_Sale.operations
             }
         }
 
-        public void updateCategory(string category_name)// update category
+        public void updateCategory(string category_name, int category_id)// update category
         {
             Connection connect = new Connection();
             using (connect.command = new MySqlCommand("update_category", connect.conn))
             {
                 connect.command.CommandType = CommandType.StoredProcedure;
                 connect.command.Parameters.AddWithValue("@cat_name", category_name);
+                connect.command.Parameters.AddWithValue("@cat_id", category_id);
                 connect.open();
                 connect.command.ExecuteNonQuery();
                 connect.close();

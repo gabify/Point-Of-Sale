@@ -28,7 +28,7 @@ namespace Point_Of_Sale.operations
             }
         }
 
-        public void addItems(string item_name, int item_category, float item_price, string item_image)// add items
+        public void addItems(string item_name, string item_category, float item_price, string item_image)// add items
         {
             Connection connect = new Connection();
             connect.open();
@@ -36,7 +36,7 @@ namespace Point_Of_Sale.operations
             {
                 connect.command.CommandType = CommandType.StoredProcedure;
                 connect.command.Parameters.AddWithValue("@itemName", item_name);
-                connect.command.Parameters.AddWithValue("@itemCategory", item_category);
+                connect.command.Parameters.AddWithValue("@itemCategory", getCategoryId(item_category));
                 connect.command.Parameters.AddWithValue("@itemPrice", item_price);
                 connect.command.Parameters.AddWithValue("@itemImage", item_image);
                 connect.command.ExecuteNonQuery();
@@ -44,7 +44,7 @@ namespace Point_Of_Sale.operations
             }
         }
 
-        public void updateItems(string item_name, int item_category, float item_price, string item_image)// update items
+        public void updateItems(string item_name, string item_category, float item_price, string item_image)// update items
         {
             Connection connect = new Connection();
             connect.open();
@@ -52,7 +52,7 @@ namespace Point_Of_Sale.operations
             {
                 connect.command.CommandType = CommandType.StoredProcedure;
                 connect.command.Parameters.AddWithValue("@itemName", item_name);
-                connect.command.Parameters.AddWithValue("@itemCategory", item_category);
+                connect.command.Parameters.AddWithValue("@itemCategory", getCategoryId(item_category));
                 connect.command.Parameters.AddWithValue("@itemPrice", item_price);
                 connect.command.Parameters.AddWithValue("@itemImage", item_image);
                 connect.command.ExecuteNonQuery();
@@ -90,7 +90,7 @@ namespace Point_Of_Sale.operations
             }
         }
 
-        public ArrayList getCategories()
+        public ArrayList getCategories() //retrieve all categories
         {
             Connection connect = new Connection();
             connect.open();
@@ -98,14 +98,28 @@ namespace Point_Of_Sale.operations
             {
                 connect.command.CommandType = CommandType.StoredProcedure;
                 ArrayList categories = new ArrayList();
-                connect.reader = connect.command.ExecuteReader();
-                while (connect.reader.Read())
+                connect.reader = connect.command.ExecuteReader(); // pass the sql command to data reader
+                while (connect.reader.Read()) // read the results from data reader
                 {
-                    categories.Add(connect.reader[0].ToString());
+                    categories.Add(connect.reader[0].ToString());// pass each result to the arraylist
                 }
                 connect.close();
-                return categories;
+                return categories; // return results
 
+            }
+        }
+
+        private int getCategoryId(string category) // get the category id from database
+        {
+            Connection connect = new Connection();
+            connect.open();
+            using (connect.command = new MySqlCommand("getCategory_id", connect.conn))
+            {
+                connect.command.CommandType = CommandType.StoredProcedure;
+                connect.command.Parameters.AddWithValue("@categoryName", category);
+                int result = Convert.ToInt32(connect.command.ExecuteScalar());
+                connect.close();
+                return result;
             }
         }
     }

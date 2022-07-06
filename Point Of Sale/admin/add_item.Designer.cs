@@ -36,25 +36,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cb_item_category = new System.Windows.Forms.ComboBox();
             this.dgvItem = new System.Windows.Forms.DataGridView();
-            this.item_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.item_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.item_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.item_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.item_pic_path = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.item_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.item_pic_path = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAddImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbItem_picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
             this.SuspendLayout();
             // 
             // pbItem_picture
             // 
+            this.pbItem_picture.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pbItem_picture.Location = new System.Drawing.Point(12, 12);
             this.pbItem_picture.Name = "pbItem_picture";
-            this.pbItem_picture.Size = new System.Drawing.Size(153, 151);
+            this.pbItem_picture.Size = new System.Drawing.Size(153, 129);
             this.pbItem_picture.TabIndex = 0;
             this.pbItem_picture.TabStop = false;
             // 
@@ -120,33 +122,7 @@
             this.dgvItem.Name = "dgvItem";
             this.dgvItem.Size = new System.Drawing.Size(629, 213);
             this.dgvItem.TabIndex = 8;
-            // 
-            // item_id
-            // 
-            this.item_id.HeaderText = "Id";
-            this.item_id.Name = "item_id";
-            this.item_id.ReadOnly = true;
-            this.item_id.Visible = false;
-            // 
-            // item_name
-            // 
-            this.item_name.HeaderText = "Item Name";
-            this.item_name.Name = "item_name";
-            // 
-            // item_category
-            // 
-            this.item_category.HeaderText = "Item Category";
-            this.item_category.Name = "item_category";
-            // 
-            // item_price
-            // 
-            this.item_price.HeaderText = "Item Price";
-            this.item_price.Name = "item_price";
-            // 
-            // item_pic_path
-            // 
-            this.item_pic_path.HeaderText = "Item Picture";
-            this.item_pic_path.Name = "item_pic_path";
+            this.dgvItem.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItem_CellClick);
             // 
             // btnAdd
             // 
@@ -156,6 +132,7 @@
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnUpdate
             // 
@@ -191,11 +168,56 @@
             this.txtSearch.Size = new System.Drawing.Size(234, 20);
             this.txtSearch.TabIndex = 13;
             // 
+            // item_id
+            // 
+            this.item_id.DataPropertyName = "item_id";
+            this.item_id.HeaderText = "Id";
+            this.item_id.Name = "item_id";
+            this.item_id.ReadOnly = true;
+            this.item_id.Visible = false;
+            // 
+            // item_name
+            // 
+            this.item_name.DataPropertyName = "item_name";
+            this.item_name.HeaderText = "Item Name";
+            this.item_name.Name = "item_name";
+            // 
+            // item_category
+            // 
+            this.item_category.DataPropertyName = "category_name";
+            this.item_category.HeaderText = "Item Category";
+            this.item_category.Name = "item_category";
+            // 
+            // item_price
+            // 
+            this.item_price.DataPropertyName = "item_price";
+            this.item_price.HeaderText = "Item Price";
+            this.item_price.Name = "item_price";
+            // 
+            // item_pic_path
+            // 
+            this.item_pic_path.DataPropertyName = "item_image";
+            this.item_pic_path.HeaderText = "Item Picture";
+            this.item_pic_path.Name = "item_pic_path";
+            this.item_pic_path.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.item_pic_path.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // btnAddImage
+            // 
+            this.btnAddImage.Location = new System.Drawing.Point(12, 147);
+            this.btnAddImage.Name = "btnAddImage";
+            this.btnAddImage.Size = new System.Drawing.Size(75, 23);
+            this.btnAddImage.TabIndex = 14;
+            this.btnAddImage.Text = "Add Image";
+            this.btnAddImage.UseVisualStyleBackColor = true;
+            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
+            // 
             // add_item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(653, 413);
+            this.Controls.Add(this.btnAddImage);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnDelete);
@@ -229,15 +251,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cb_item_category;
         private System.Windows.Forms.DataGridView dgvItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn item_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn item_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn item_category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn item_price;
-        private System.Windows.Forms.DataGridViewImageColumn item_pic_path;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn item_pic_path;
+        private System.Windows.Forms.Button btnAddImage;
     }
 }
