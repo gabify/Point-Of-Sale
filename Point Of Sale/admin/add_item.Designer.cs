@@ -41,12 +41,12 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnAddImage = new System.Windows.Forms.Button();
             this.item_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.item_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.item_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.item_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.item_pic_path = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAddImage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbItem_picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItem)).BeginInit();
             this.SuspendLayout();
@@ -142,6 +142,7 @@
             this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
@@ -151,6 +152,7 @@
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnRefresh
             // 
@@ -160,6 +162,7 @@
             this.btnRefresh.TabIndex = 12;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // txtSearch
             // 
@@ -167,6 +170,17 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(234, 20);
             this.txtSearch.TabIndex = 13;
+            this.txtSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyUp);
+            // 
+            // btnAddImage
+            // 
+            this.btnAddImage.Location = new System.Drawing.Point(12, 147);
+            this.btnAddImage.Name = "btnAddImage";
+            this.btnAddImage.Size = new System.Drawing.Size(75, 23);
+            this.btnAddImage.TabIndex = 14;
+            this.btnAddImage.Text = "Add Image";
+            this.btnAddImage.UseVisualStyleBackColor = true;
+            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
             // 
             // item_id
             // 
@@ -201,16 +215,6 @@
             this.item_pic_path.Name = "item_pic_path";
             this.item_pic_path.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.item_pic_path.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // btnAddImage
-            // 
-            this.btnAddImage.Location = new System.Drawing.Point(12, 147);
-            this.btnAddImage.Name = "btnAddImage";
-            this.btnAddImage.Size = new System.Drawing.Size(75, 23);
-            this.btnAddImage.TabIndex = 14;
-            this.btnAddImage.Text = "Add Image";
-            this.btnAddImage.UseVisualStyleBackColor = true;
-            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
             // 
             // add_item
             // 
@@ -256,11 +260,11 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnAddImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn item_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn item_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn item_category;
         private System.Windows.Forms.DataGridViewTextBoxColumn item_price;
         private System.Windows.Forms.DataGridViewTextBoxColumn item_pic_path;
-        private System.Windows.Forms.Button btnAddImage;
     }
 }

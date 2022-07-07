@@ -15,6 +15,7 @@ namespace Point_Of_Sale.admin
     {
         item items = new item();
         string image_filename;
+        int itemId;
         public add_item()
         {
             InitializeComponent();
@@ -32,12 +33,12 @@ namespace Point_Of_Sale.admin
             
         }
 
-        private void add_item_Load(object sender, EventArgs e)
+        private void add_item_Load(object sender, EventArgs e) // form load
         {
             refresh();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)// add button
         {
             items.addItems(txtItem_name.Text, cb_item_category.SelectedItem.ToString(), float.Parse(txtPrice.Text),image_filename);
             refresh();
@@ -54,13 +55,47 @@ namespace Point_Of_Sale.admin
             }
         }
 
-        private void dgvItem_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvItem_CellClick(object sender, DataGridViewCellEventArgs e) // cell click
         {
+            itemId = Convert.ToInt32(dgvItem.CurrentRow.Cells[0].Value);
             txtItem_name.Text = dgvItem.CurrentRow.Cells[1].Value.ToString();
             txtPrice.Text = dgvItem.CurrentRow.Cells[3].Value.ToString();
-            cb_item_category.SelectedText = dgvItem.CurrentRow.Cells[2].ToString();
-            pbItem_picture.Image = new Bitmap(dgvItem.CurrentRow.Cells[4].Value.ToString());
+            cb_item_category.Text = dgvItem.CurrentRow.Cells[2].Value.ToString();
+            if (dgvItem.CurrentRow.Cells[4].Value.ToString() == "")
+            {
+                pbItem_picture.Image = null;
+            }
+            else
+            {
+                pbItem_picture.Image = new Bitmap(dgvItem.CurrentRow.Cells[4].Value.ToString());
+            }
+        }
 
+        private void btnUpdate_Click(object sender, EventArgs e) // update button
+        {
+            items.updateItems(txtItem_name.Text, cb_item_category.SelectedItem.ToString(), float.Parse(txtPrice.Text), image_filename, itemId);
+            refresh();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure you want to delete this item?", "Warning", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                items.deleteItems(itemId);
+                refresh();
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            refresh();
+        }
+
+        private void txtSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            dgvItem.Refresh();
+            dgvItem.DataSource = items.searchItem(txtSearch.Text);
         }
     }
 }

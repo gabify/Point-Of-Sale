@@ -44,7 +44,7 @@ namespace Point_Of_Sale.operations
             }
         }
 
-        public void updateItems(string item_name, string item_category, float item_price, string item_image)// update items
+        public void updateItems(string item_name, string item_category, float item_price, string item_image, int item_id)// update items
         {
             Connection connect = new Connection();
             connect.open();
@@ -55,6 +55,7 @@ namespace Point_Of_Sale.operations
                 connect.command.Parameters.AddWithValue("@itemCategory", getCategoryId(item_category));
                 connect.command.Parameters.AddWithValue("@itemPrice", item_price);
                 connect.command.Parameters.AddWithValue("@itemImage", item_image);
+                connect.command.Parameters.AddWithValue("@itemId", item_id);
                 connect.command.ExecuteNonQuery();
                 connect.close();
             }
