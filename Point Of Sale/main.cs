@@ -29,5 +29,11 @@ namespace Point_Of_Sale
             add_item addItem = new add_item();
             addItem.Show();
         }
+
+        private void btnAddCashier_Click(object sender, EventArgs e)
+        {
+            add_cashier addCashier = new add_cashier();
+            addCashier.Show();
+        }
     }
 }

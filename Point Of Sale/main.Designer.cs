@@ -30,6 +30,7 @@
         {
             this.add_category = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
+            this.btnAddCashier = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // add_category
@@ -52,11 +53,22 @@
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
             // 
+            // btnAddCashier
+            // 
+            this.btnAddCashier.Location = new System.Drawing.Point(12, 156);
+            this.btnAddCashier.Name = "btnAddCashier";
+            this.btnAddCashier.Size = new System.Drawing.Size(119, 38);
+            this.btnAddCashier.TabIndex = 2;
+            this.btnAddCashier.Text = "Add Cashier";
+            this.btnAddCashier.UseVisualStyleBackColor = true;
+            this.btnAddCashier.Click += new System.EventHandler(this.btnAddCashier_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnAddCashier);
             this.Controls.Add(this.btnAddItem);
             this.Controls.Add(this.add_category);
             this.Name = "main";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button add_category;
         private System.Windows.Forms.Button btnAddItem;
+        private System.Windows.Forms.Button btnAddCashier;
     }
 }

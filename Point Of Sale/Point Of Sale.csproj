@@ -61,6 +61,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\add_cashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\add_cashier.Designer.cs">
+      <DependentUpon>add_cashier.cs</DependentUpon>
+    </Compile>
     <Compile Include="admin\add_category.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,11 +92,15 @@
     <Compile Include="main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
+    <Compile Include="operations\cashier.cs" />
     <Compile Include="operations\category.cs" />
     <Compile Include="operations\item.cs" />
     <Compile Include="operations\login.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="admin\add_cashier.resx">
+      <DependentUpon>add_cashier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="admin\add_category.resx">
       <DependentUpon>add_category.cs</DependentUpon>
     </EmbeddedResource>
