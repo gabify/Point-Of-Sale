@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data;
 using Point_Of_Sale.dbConnect;
+using Point_Of_Sale.cashier;
 using System.Collections;
 
 namespace Point_Of_Sale.operations
@@ -25,6 +26,31 @@ namespace Point_Of_Sale.operations
                 connect.adapter.Fill(dt);
                 connect.close();
                 return dt;
+            }
+        }
+
+        public List<Items> getMenuItems()
+        {
+            Connection connect = new Connection(); // init connection class
+            connect.open(); // open connection
+            using (connect.command = new MySqlCommand("getItems", connect.conn))// pass the sql query to the sql command builder
+            {
+                connect.command.CommandType = CommandType.StoredProcedure; //specify command type
+                List<Items> items = new List<Items>(); // init list of items
+                connect.reader = connect.command.ExecuteReader(); // execute query
+                while (connect.reader.Read()) // read each item in the query result
+                {
+                    Items newItem = new Items(); // init new item
+                    newItem.itemId = Convert.ToInt32(connect.reader["item_id"]);
+                    newItem.itemName = connect.reader["item_name"].ToString();
+                    newItem.itemcategory = connect.reader["category_name"].ToString();
+                    newItem.itemPrice = float.Parse(connect.reader["item_price"].ToString());
+                    newItem.itemImage = connect.reader["item_image"].ToString();
+
+                    items.Add(newItem); // pass each item to the list of item
+                }
+                connect.close(); // close connection 
+                return items; //return list of item
             }
         }
 

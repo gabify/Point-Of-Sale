@@ -79,6 +79,25 @@
     <Compile Include="admin\add_item.Designer.cs">
       <DependentUpon>add_item.cs</DependentUpon>
     </Compile>
+    <Compile Include="admin\view_cashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="admin\view_cashier.Designer.cs">
+      <DependentUpon>view_cashier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cashier\Items.cs" />
+    <Compile Include="cashier\menu_item.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cashier\menu_item.Designer.cs">
+      <DependentUpon>menu_item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cashier\order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cashier\order.Designer.cs">
+      <DependentUpon>order.cs</DependentUpon>
+    </Compile>
     <Compile Include="dbConnect\Connection.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -92,7 +111,7 @@
     <Compile Include="main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
-    <Compile Include="operations\cashier.cs" />
+    <Compile Include="operations\Cashier.cs" />
     <Compile Include="operations\category.cs" />
     <Compile Include="operations\item.cs" />
     <Compile Include="operations\login.cs" />
@@ -106,6 +125,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin\add_item.resx">
       <DependentUpon>add_item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admin\view_cashier.resx">
+      <DependentUpon>view_cashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cashier\menu_item.resx">
+      <DependentUpon>menu_item.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cashier\order.resx">
+      <DependentUpon>order.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

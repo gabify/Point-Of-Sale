@@ -53,8 +53,8 @@ namespace Point_Of_Sale.admin
             if (txtpass.Text == txtconpass.Text)
             {
                 data[6] = txtpass.Text;
-                cashier Cashier = new cashier();
-                Cashier.addCashier(data);
+                Cashier cash = new Cashier();
+                cash.addCashier(data);
                 clearFields();
                 MessageBox.Show("Cashier registered successfully!");
             }
