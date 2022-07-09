@@ -9,7 +9,7 @@ using Point_Of_Sale.dbConnect;
 
 namespace Point_Of_Sale.operations
 {
-    class cashier
+    class Cashier
     {
         public void addCashier(string[] data) // add cashier
         {
