@@ -17,7 +17,6 @@ namespace Point_Of_Sale.cashier
     public partial class menu_item : UserControl
     {
         Items newItem = new Items();
-        public event EventHandler<SelectedItemArgs> SelectedItem;
         public menu_item(int itemId, string itemName, string itemCategory, float itemPrice, string itemImage)
         {
             newItem.itemId = itemId;
@@ -47,21 +46,12 @@ namespace Point_Of_Sale.cashier
 
         private void menu_item_MouseClick(object sender, MouseEventArgs e)
         {
-            NumberOfOrder form = new NumberOfOrder(newItem.itemName, newItem.itemPrice);
-            OnSelectedItem(newItem.itemName, newItem.itemPrice);
+            NumberOfOrder form = new NumberOfOrder();
+            form.ItemName = newItem.itemName;
+            form.ItemPrice = newItem.itemPrice;
+            form.itemId = newItem.itemId;
             form.Show();
         }
-
-        protected virtual void OnSelectedItem(string itemName, float itemPrice)
-        {
-            SelectedItem?.Invoke(this, new SelectedItemArgs() { itemName = itemName, itemPrice = itemPrice });
-        }
-    }
-
-    public class SelectedItemArgs : EventArgs
-    {
-        public string itemName { get; set; }
-        public float itemPrice { get; set; }
     }
 
 }

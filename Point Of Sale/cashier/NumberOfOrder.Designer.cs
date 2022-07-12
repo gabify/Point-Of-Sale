@@ -81,6 +81,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "NumberOfOrder";
             this.Text = "NumberOfOrder";
+            this.Load += new System.EventHandler(this.NumberOfOrder_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

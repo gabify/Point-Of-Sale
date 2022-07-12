@@ -15,12 +15,15 @@ namespace Point_Of_Sale.cashier
 {
     public partial class order : Form
     {
-        OrderList orderList = new OrderList();
-        NumberOfOrder numOfOrder = new NumberOfOrder();
+        public static order instance;
+        public FlowLayoutPanel orders;
+        public Label total;
         public order()
         {
             InitializeComponent();
-            numOfOrder.OrderedConfirmed += orderList.OnOrderConfirmed;
+            instance = this;
+            orders = selectedOrderLayout;
+            total = lblTotalorder;
         }
 
         private void populateMenuItems()
@@ -47,13 +50,11 @@ namespace Point_Of_Sale.cashier
         {
             populateMenuItems();
         }
-    }
 
-    public class OrderList
-    {
-        public void OnOrderConfirmed(Object source, OrderEventArgs e)
+        private void btnClearOrders_Click(object sender, EventArgs e)
         {
-            //add selected item to order list flow layout
+            selectedOrderLayout.Controls.Clear();
+            lblTotalorder.Text = "";
         }
     }
 }

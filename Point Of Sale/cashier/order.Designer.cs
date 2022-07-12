@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.order_panel = new System.Windows.Forms.Panel();
-            this.menu_layout = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnClearOrders = new System.Windows.Forms.Button();
-            this.btnPlaceorder = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblTotalorder = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnPlaceorder = new System.Windows.Forms.Button();
+            this.btnClearOrders = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.menu_layout = new System.Windows.Forms.FlowLayoutPanel();
+            this.selectedOrderLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.order_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // order_panel
             // 
+            this.order_panel.Controls.Add(this.selectedOrderLayout);
             this.order_panel.Controls.Add(this.lblTotalorder);
             this.order_panel.Controls.Add(this.label2);
             this.order_panel.Controls.Add(this.btnPlaceorder);
@@ -48,8 +50,53 @@
             this.order_panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.order_panel.Location = new System.Drawing.Point(459, 0);
             this.order_panel.Name = "order_panel";
-            this.order_panel.Size = new System.Drawing.Size(225, 458);
+            this.order_panel.Size = new System.Drawing.Size(244, 458);
             this.order_panel.TabIndex = 1;
+            // 
+            // lblTotalorder
+            // 
+            this.lblTotalorder.AutoSize = true;
+            this.lblTotalorder.Location = new System.Drawing.Point(135, 384);
+            this.lblTotalorder.Name = "lblTotalorder";
+            this.lblTotalorder.Size = new System.Drawing.Size(0, 13);
+            this.lblTotalorder.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 384);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Total:";
+            // 
+            // btnPlaceorder
+            // 
+            this.btnPlaceorder.Location = new System.Drawing.Point(64, 414);
+            this.btnPlaceorder.Name = "btnPlaceorder";
+            this.btnPlaceorder.Size = new System.Drawing.Size(99, 32);
+            this.btnPlaceorder.TabIndex = 2;
+            this.btnPlaceorder.Text = "Place Order";
+            this.btnPlaceorder.UseVisualStyleBackColor = true;
+            // 
+            // btnClearOrders
+            // 
+            this.btnClearOrders.Location = new System.Drawing.Point(138, 60);
+            this.btnClearOrders.Name = "btnClearOrders";
+            this.btnClearOrders.Size = new System.Drawing.Size(75, 23);
+            this.btnClearOrders.TabIndex = 1;
+            this.btnClearOrders.Text = "Clear All";
+            this.btnClearOrders.UseVisualStyleBackColor = true;
+            this.btnClearOrders.Click += new System.EventHandler(this.btnClearOrders_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Current Order";
             // 
             // menu_layout
             // 
@@ -61,55 +108,20 @@
             this.menu_layout.Size = new System.Drawing.Size(453, 458);
             this.menu_layout.TabIndex = 2;
             // 
-            // label1
+            // selectedOrderLayout
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Current Order";
-            // 
-            // btnClearOrders
-            // 
-            this.btnClearOrders.Location = new System.Drawing.Point(138, 60);
-            this.btnClearOrders.Name = "btnClearOrders";
-            this.btnClearOrders.Size = new System.Drawing.Size(75, 23);
-            this.btnClearOrders.TabIndex = 1;
-            this.btnClearOrders.Text = "Clear All";
-            this.btnClearOrders.UseVisualStyleBackColor = true;
-            // 
-            // btnPlaceorder
-            // 
-            this.btnPlaceorder.Location = new System.Drawing.Point(64, 414);
-            this.btnPlaceorder.Name = "btnPlaceorder";
-            this.btnPlaceorder.Size = new System.Drawing.Size(99, 32);
-            this.btnPlaceorder.TabIndex = 2;
-            this.btnPlaceorder.Text = "Place Order";
-            this.btnPlaceorder.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 384);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Total:";
-            // 
-            // lblTotalorder
-            // 
-            this.lblTotalorder.AutoSize = true;
-            this.lblTotalorder.Location = new System.Drawing.Point(135, 384);
-            this.lblTotalorder.Name = "lblTotalorder";
-            this.lblTotalorder.Size = new System.Drawing.Size(0, 13);
-            this.lblTotalorder.TabIndex = 4;
+            this.selectedOrderLayout.AutoScroll = true;
+            this.selectedOrderLayout.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.selectedOrderLayout.Location = new System.Drawing.Point(0, 102);
+            this.selectedOrderLayout.Name = "selectedOrderLayout";
+            this.selectedOrderLayout.Size = new System.Drawing.Size(244, 279);
+            this.selectedOrderLayout.TabIndex = 5;
             // 
             // order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 458);
+            this.ClientSize = new System.Drawing.Size(703, 458);
             this.Controls.Add(this.menu_layout);
             this.Controls.Add(this.order_panel);
             this.Name = "order";
@@ -129,5 +141,6 @@
         private System.Windows.Forms.Button btnPlaceorder;
         private System.Windows.Forms.Button btnClearOrders;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel selectedOrderLayout;
     }
 }

@@ -12,25 +12,52 @@ namespace Point_Of_Sale.cashier
 {
     public partial class NumberOfOrder : Form
     {
+
         int _numberOfOrder;
-        string _itemName;
-        float _itemPrice;
-        public event EventHandler<OrderEventArgs> OrderedConfirmed;
-        ItemSelected itemSelected = new ItemSelected();
-        public NumberOfOrder(string itemName, float itemPrice)
+        float total;
+        private string _itemName;
+        private float _itemPrice;
+        private int ItemId;
+        public static NumberOfOrder instance;
+        public NumberOfOrder()
         {
-            this._itemName = itemName;
-            this._itemPrice = itemPrice;
             InitializeComponent();
-            ItemSelected
-            lblTitle.Text = "How many orders of " + _itemName + " ?";
+            instance = this;
+        }
+
+        private void confirm()
+        {
+            _numberOfOrder = Convert.ToInt32(txtNumberOfOrder.Text);
+            SelectedItem selectedItem = new SelectedItem(ItemId, _numberOfOrder, _itemName, _itemPrice);
+            if (order.instance.orders.Controls.Count < 0)
+            {
+                order.instance.orders.Controls.Clear();
+            }
+            else
+            {
+                order.instance.orders.Controls.Add(selectedItem);
+                computeTotal();
+            }
+        }
+
+        private void computeTotal()
+        {
+            if (String.IsNullOrEmpty(order.instance.total.Text.ToString()))
+            {
+                total = 0.0f;
+            }
+            else
+            {
+                total = float.Parse(order.instance.total.Text.ToString());
+            }
+            total += _itemPrice;
+            order.instance.total.Text = total.ToString();
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            _numberOfOrder = Convert.ToInt32(txtNumberOfOrder.Text);
-            OrderedItem order = new OrderedItem(_numberOfOrder, _itemName, _itemPrice);
-            OnOrderedConfirmed(order);
+            confirm();
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -38,37 +65,30 @@ namespace Point_Of_Sale.cashier
             Close();
         }
 
-        protected virtual void OnOrderedConfirmed( OrderedItem orderedItem)
+        
+        public string ItemName
         {
-            OrderedConfirmed?.Invoke(this, new OrderEventArgs() { order = orderedItem});
+            get { return _itemName; }
+            set { _itemName = value; }
         }
-    }
 
-    public class OrderEventArgs : EventArgs
-    {
-        public OrderedItem order { get; set; }
-    }
-
-    public class OrderedItem
-    {
-        public int NumberOforder;
-        public string ItemName;
-        public float ItemPrice;
-
-        public OrderedItem(int numberOfOrder, string itemName, float itemPrice)
+        
+        public float ItemPrice
         {
-            this.NumberOforder = numberOfOrder;
-            this.ItemName = itemName;
-            this.ItemPrice = itemPrice;
-            
+            get { return _itemPrice; }
+            set { _itemPrice = value; }
         }
-    }
 
-    public class ItemSelected
-    {
-        public void onItemSelected(Object source, SelectedItemArgs e)
+        public int itemId
         {
-            //pass data to main class
+            get { return ItemId; }
+            set { ItemId = value; }
+        }
+
+
+        private void NumberOfOrder_Load(object sender, EventArgs e)
+        {
+            lblTitle.Text = "How many orders of " + _itemName + " ?";
         }
     }
 }
