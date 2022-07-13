@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.order_panel = new System.Windows.Forms.Panel();
+            this.selectedOrderLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.lblTotalorder = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnPlaceorder = new System.Windows.Forms.Button();
             this.btnClearOrders = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.menu_layout = new System.Windows.Forms.FlowLayoutPanel();
-            this.selectedOrderLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.order_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,15 @@
             this.order_panel.Name = "order_panel";
             this.order_panel.Size = new System.Drawing.Size(244, 458);
             this.order_panel.TabIndex = 1;
+            // 
+            // selectedOrderLayout
+            // 
+            this.selectedOrderLayout.AutoScroll = true;
+            this.selectedOrderLayout.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.selectedOrderLayout.Location = new System.Drawing.Point(0, 102);
+            this.selectedOrderLayout.Name = "selectedOrderLayout";
+            this.selectedOrderLayout.Size = new System.Drawing.Size(244, 279);
+            this.selectedOrderLayout.TabIndex = 5;
             // 
             // lblTotalorder
             // 
@@ -78,6 +87,7 @@
             this.btnPlaceorder.TabIndex = 2;
             this.btnPlaceorder.Text = "Place Order";
             this.btnPlaceorder.UseVisualStyleBackColor = true;
+            this.btnPlaceorder.Click += new System.EventHandler(this.btnPlaceorder_Click);
             // 
             // btnClearOrders
             // 
@@ -107,15 +117,6 @@
             this.menu_layout.Name = "menu_layout";
             this.menu_layout.Size = new System.Drawing.Size(453, 458);
             this.menu_layout.TabIndex = 2;
-            // 
-            // selectedOrderLayout
-            // 
-            this.selectedOrderLayout.AutoScroll = true;
-            this.selectedOrderLayout.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.selectedOrderLayout.Location = new System.Drawing.Point(0, 102);
-            this.selectedOrderLayout.Name = "selectedOrderLayout";
-            this.selectedOrderLayout.Size = new System.Drawing.Size(244, 279);
-            this.selectedOrderLayout.TabIndex = 5;
             // 
             // order
             // 

@@ -105,6 +105,12 @@
     <Compile Include="cashier\order.Designer.cs">
       <DependentUpon>order.cs</DependentUpon>
     </Compile>
+    <Compile Include="cashier\PlacaOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cashier\PlacaOrder.Designer.cs">
+      <DependentUpon>PlacaOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="cashier\SelectedItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cashier\order.resx">
       <DependentUpon>order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cashier\PlacaOrder.resx">
+      <DependentUpon>PlacaOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cashier\SelectedItem.resx">
       <DependentUpon>SelectedItem.cs</DependentUpon>

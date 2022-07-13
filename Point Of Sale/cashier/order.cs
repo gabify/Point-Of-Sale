@@ -56,5 +56,31 @@ namespace Point_Of_Sale.cashier
             selectedOrderLayout.Controls.Clear();
             lblTotalorder.Text = "";
         }
+
+        private void btnPlaceorder_Click(object sender, EventArgs e)
+        {
+            List<OrderedItem> ordersList = new List<OrderedItem>();
+            foreach (SelectedItem order in selectedOrderLayout.Controls.OfType<SelectedItem>())
+            {
+                OrderedItem item = new OrderedItem();
+                item.itemId = order.ItemId;
+                item.quantity = order._numOfOrders;
+                item.itemName = order._itemName;
+                item.itemPrice = order._itemPrice;
+                item.totalItemPrice = order.totalPrice;
+                ordersList.Add(item);
+            }
+            PlacaOrder form = new PlacaOrder(ordersList, float.Parse(lblTotalorder.Text.ToString()));
+            form.Show();
+        }
+    }
+
+    public class OrderedItem
+    {
+        public int itemId { get; set; }
+        public int quantity { get; set; }
+        public string itemName { get; set; }
+        public float itemPrice { get; set; }
+        public float totalItemPrice { get; set; }
     }
 }

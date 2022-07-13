@@ -46,6 +46,16 @@ namespace Point_Of_Sale.cashier
 
         private void menu_item_MouseClick(object sender, MouseEventArgs e)
         {
+            menuItemSelect();
+        }
+
+        private void pb_item_image_Click(object sender, EventArgs e)
+        {
+            menuItemSelect();
+        }
+
+        private void menuItemSelect()
+        {
             NumberOfOrder form = new NumberOfOrder();
             form.ItemName = newItem.itemName;
             form.ItemPrice = newItem.itemPrice;

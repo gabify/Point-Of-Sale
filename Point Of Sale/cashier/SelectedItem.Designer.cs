@@ -57,9 +57,9 @@
             this.lblitemPrice.AutoSize = true;
             this.lblitemPrice.Location = new System.Drawing.Point(125, 14);
             this.lblitemPrice.Name = "lblitemPrice";
-            this.lblitemPrice.Size = new System.Drawing.Size(54, 13);
+            this.lblitemPrice.Size = new System.Drawing.Size(81, 13);
             this.lblitemPrice.TabIndex = 2;
-            this.lblitemPrice.Text = "Item Price";
+            this.lblitemPrice.Text = "Total Item Price";
             // 
             // btnremove
             // 

@@ -70,6 +70,7 @@
             this.pb_item_image.Size = new System.Drawing.Size(100, 97);
             this.pb_item_image.TabIndex = 3;
             this.pb_item_image.TabStop = false;
+            this.pb_item_image.Click += new System.EventHandler(this.pb_item_image_Click);
             // 
             // menu_item
             // 
@@ -80,6 +81,7 @@
             this.Controls.Add(this.lbl_item_price);
             this.Controls.Add(this.lbl_item_category);
             this.Controls.Add(this.lbl_item_name);
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "menu_item";
             this.Size = new System.Drawing.Size(187, 161);
             this.Load += new System.EventHandler(this.menu_item_Load);

@@ -15,6 +15,7 @@ namespace Point_Of_Sale.cashier
 
         int _numberOfOrder;
         float total;
+        float totalPrice;
         private string _itemName;
         private float _itemPrice;
         private int ItemId;
@@ -28,7 +29,8 @@ namespace Point_Of_Sale.cashier
         private void confirm()
         {
             _numberOfOrder = Convert.ToInt32(txtNumberOfOrder.Text);
-            SelectedItem selectedItem = new SelectedItem(ItemId, _numberOfOrder, _itemName, _itemPrice);
+            totalPrice = _itemPrice * _numberOfOrder;
+            SelectedItem selectedItem = new SelectedItem(ItemId, _numberOfOrder, _itemName, _itemPrice, totalPrice);
             if (order.instance.orders.Controls.Count < 0)
             {
                 order.instance.orders.Controls.Clear();
@@ -50,7 +52,7 @@ namespace Point_Of_Sale.cashier
             {
                 total = float.Parse(order.instance.total.Text.ToString());
             }
-            total += _itemPrice;
+            total += totalPrice;
             order.instance.total.Text = total.ToString();
         }
 
