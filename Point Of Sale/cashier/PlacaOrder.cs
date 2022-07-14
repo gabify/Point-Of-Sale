@@ -27,6 +27,11 @@ namespace Point_Of_Sale.cashier
         {
             dgvorderList.DataSource = orders;
         }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Order placed successfully. Please wait for your order to served");
+        }
     }
 
 

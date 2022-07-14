@@ -107,6 +107,7 @@
             this.btnPay.TabIndex = 14;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // btnerase
             // 
