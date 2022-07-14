@@ -20,6 +20,28 @@ namespace Point_Of_Sale
             InitializeComponent();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void txtUsername_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtUsername.ForeColor = Color.Black;
+            txtUsername.Text = "";
+        }
+
+        private void txtPassword_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtPassword.ForeColor = Color.Black;
+            txtPassword.Text = "";
+        }
+
+        private void txtUsername_Leave(object sender, EventArgs e)
+        {
+           
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (log.ifEmpty(txtUsername.Text))

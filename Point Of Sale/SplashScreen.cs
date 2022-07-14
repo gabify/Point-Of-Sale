@@ -24,7 +24,7 @@ namespace Point_Of_Sale
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            loadingbar.Width += 6;
+            loadingbar.Width += 7;
             if (loadingbar.Width >= 599)
             {
                 timer1.Stop();
