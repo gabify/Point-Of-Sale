@@ -21,13 +21,27 @@ namespace Point_Of_Sale.operations
                 connect.command.CommandType = CommandType.StoredProcedure;
                 connect.command.Parameters.AddWithValue("@uname", uname);
                 object result = connect.command.ExecuteScalar();
-                connect.close();
+                connect.reader = connect.command.ExecuteReader();
                 if (result != null)
                 {
                     String stringResult = result.ToString();
+                    int userLevel = 11;
                     if (password.Equals(stringResult))
                     {
-                        return 1; // return 1 if password is correct.
+                        while (connect.reader.Read()) //if password is correct.
+                        {
+                            userLevel = Convert.ToInt32(connect.reader["user_level"]);
+                        }
+                        connect.close();
+                        if (userLevel == 0)
+                        {
+                            return 10; // return 10 if admin.
+                        }
+                        else
+                        {
+                            return 11; //return 11 of cashier.
+                        }
+                         
                     }
                     else
                     {

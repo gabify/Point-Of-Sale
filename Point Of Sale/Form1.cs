@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Point_Of_Sale.operations;
+using Point_Of_Sale.cashier;
 
 namespace Point_Of_Sale
 {
@@ -39,44 +40,68 @@ namespace Point_Of_Sale
 
         private void txtUsername_Leave(object sender, EventArgs e)
         {
-           
+            if (txtUsername.Text == "")
+            {
+                unameError.Text = "Username is missing.";
+                unameError.Visible = true;
+                btnLogin.Enabled = false;
+            }
+            else
+            {
+                unameError.Visible = false;
+                btnLogin.Enabled = true;
+            }
+        }
+
+        private void btnCashier_Click(object sender, EventArgs e)
+        {
+            CashierLogin form = new CashierLogin();
+            form.Show();
+            Hide();
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "")
+            {
+                errorPass.Text = "Password is missing";
+                errorPass.Visible = true;
+                btnLogin.Enabled = false;
+            }
+            else
+            {
+                unameError.Visible = false;
+                btnLogin.Enabled = true;
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (log.ifEmpty(txtUsername.Text))
+            password = txtPassword.Text;
+            username = txtUsername.Text;
+            int result = log.userLogin(username, password);
+
+            switch (result)
             {
-                MessageBox.Show("Invalid username. Try again");
+                case 0: // if user does not exist
+                    unameError.Text = "User does not exist";
+                    unameError.Visible = true;
+                    errorPass.Text = "Incorrect Password";
+                    errorPass.Visible = true;
+                    break;
+                case 10: // if correct username and password is correct and user level is for admin
+                    main form = new main();
+                    form.Show();
+                    Hide();
+                    break;
+                case 11: // if correct username and password is correct but user level is for cashier
+                    MessageBox.Show("This user is not allowed to access the admin.");
+                    break;
+                case 2: // if password is incorrect
+                    errorPass.Text = "Incorrect Password";
+                    errorPass.Visible = true;
+                    break;
             }
-            else
-            {
-                username = txtUsername.Text;
-                if (log.ifEmpty(txtPassword.Text))
-                {
-                    MessageBox.Show("Invalid password. Try again");
-                }
-                else
-                {
-                    password = txtPassword.Text;
-                    int result = log.userLogin(username, password);
-
-                    switch (result)
-                    {
-                        case 0: // if user does not exist
-                            MessageBox.Show("Invalid username and password. User does not exist");
-                            break;
-                        case 1: // if correct username and password is correct
-                            main form = new main();
-                            form.Show();
-                            break;
-                        case 2: // if password is incorrect
-                            MessageBox.Show("Incorrect password. Try again");
-                            break;
-                    }
-                }
-            }
-
-
         }
     }
 }

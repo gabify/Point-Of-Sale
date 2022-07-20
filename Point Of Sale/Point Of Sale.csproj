@@ -104,6 +104,18 @@
     <Compile Include="admin\view_cashier.Designer.cs">
       <DependentUpon>view_cashier.cs</DependentUpon>
     </Compile>
+    <Compile Include="cashier\CashierLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cashier\CashierLogin.Designer.cs">
+      <DependentUpon>CashierLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cashier\CashierMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="cashier\CashierMain.Designer.cs">
+      <DependentUpon>CashierMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="cashier\Items.cs" />
     <Compile Include="cashier\menu_item.cs">
       <SubType>UserControl</SubType>
@@ -177,6 +189,9 @@
     <EmbeddedResource Include="admin\view_cashier.resx">
       <DependentUpon>view_cashier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cashier\CashierLogin.resx">
+      <DependentUpon>CashierLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cashier\menu_item.resx">
       <DependentUpon>menu_item.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +257,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\adrian-infernus-GLf7bAwCdYg-unsplash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash-machine.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
