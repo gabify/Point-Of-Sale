@@ -34,14 +34,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.errorPass = new System.Windows.Forms.Label();
+            this.unameError = new System.Windows.Forms.Label();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.errorPass = new System.Windows.Forms.Label();
-            this.unameError = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -126,6 +126,30 @@
             this.panel2.Size = new System.Drawing.Size(331, 319);
             this.panel2.TabIndex = 9;
             // 
+            // errorPass
+            // 
+            this.errorPass.AutoSize = true;
+            this.errorPass.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.errorPass.ForeColor = System.Drawing.Color.Red;
+            this.errorPass.Location = new System.Drawing.Point(41, 176);
+            this.errorPass.Name = "errorPass";
+            this.errorPass.Size = new System.Drawing.Size(70, 13);
+            this.errorPass.TabIndex = 11;
+            this.errorPass.Text = "Error handler";
+            this.errorPass.Visible = false;
+            // 
+            // unameError
+            // 
+            this.unameError.AutoSize = true;
+            this.unameError.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unameError.ForeColor = System.Drawing.Color.Red;
+            this.unameError.Location = new System.Drawing.Point(41, 92);
+            this.unameError.Name = "unameError";
+            this.unameError.Size = new System.Drawing.Size(70, 13);
+            this.unameError.TabIndex = 10;
+            this.unameError.Text = "Error handler";
+            this.unameError.Visible = false;
+            // 
             // btnAdmin
             // 
             this.btnAdmin.BackColor = System.Drawing.Color.White;
@@ -183,6 +207,9 @@
             this.txtUsername.Size = new System.Drawing.Size(264, 26);
             this.txtUsername.TabIndex = 1;
             this.txtUsername.Text = "Username";
+            this.txtUsername.Click += new System.EventHandler(this.txtUsername_Click);
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // txtPassword
             // 
@@ -195,30 +222,9 @@
             this.txtPassword.TabIndex = 3;
             this.txtPassword.Text = "Password";
             this.txtPassword.UseSystemPasswordChar = true;
-            // 
-            // errorPass
-            // 
-            this.errorPass.AutoSize = true;
-            this.errorPass.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.errorPass.ForeColor = System.Drawing.Color.Red;
-            this.errorPass.Location = new System.Drawing.Point(41, 176);
-            this.errorPass.Name = "errorPass";
-            this.errorPass.Size = new System.Drawing.Size(70, 13);
-            this.errorPass.TabIndex = 11;
-            this.errorPass.Text = "Error handler";
-            this.errorPass.Visible = false;
-            // 
-            // unameError
-            // 
-            this.unameError.AutoSize = true;
-            this.unameError.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unameError.ForeColor = System.Drawing.Color.Red;
-            this.unameError.Location = new System.Drawing.Point(41, 92);
-            this.unameError.Name = "unameError";
-            this.unameError.Size = new System.Drawing.Size(70, 13);
-            this.unameError.TabIndex = 10;
-            this.unameError.Text = "Error handler";
-            this.unameError.Visible = false;
+            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // CashierLogin
             // 

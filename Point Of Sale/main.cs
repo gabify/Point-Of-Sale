@@ -48,5 +48,10 @@ namespace Point_Of_Sale
             order newOrder = new order();
             newOrder.Show();
         }
+
+        private void lblClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
