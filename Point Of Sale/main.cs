@@ -22,24 +22,36 @@ namespace Point_Of_Sale
         private void add_category_Click(object sender, EventArgs e)
         {
             add_category addCategory = new add_category();
+            addCategory.TopLevel = false;
+            addCategory.AutoScroll = true;
+            mainPanel.Controls.Add(addCategory);
             addCategory.Show();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             add_item addItem = new add_item();
+            addItem.TopLevel = false;
+            addItem.AutoScroll = true;
+            mainPanel.Controls.Add(addItem);
             addItem.Show();
         }
 
         private void btnAddCashier_Click(object sender, EventArgs e)
         {
             add_cashier addCashier = new add_cashier();
+            addCashier.TopLevel = false;
+            addCashier.AutoScroll = true;
+            mainPanel.Controls.Add(addCashier);
             addCashier.Show();
         }
 
         private void btnViewCashier_Click(object sender, EventArgs e)
         {
             view_cashier viewCashier = new view_cashier();
+            viewCashier.TopLevel = false;
+            viewCashier.AutoScroll = true;
+            mainPanel.Controls.Add(viewCashier);
             viewCashier.Show();
         }
 

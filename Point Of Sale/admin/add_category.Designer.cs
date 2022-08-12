@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 367);
+            this.ClientSize = new System.Drawing.Size(1099, 653);
             this.Controls.Add(this.dgv_category);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnUpdate);
@@ -150,6 +150,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCategory_name);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "add_category";
             this.Text = "add_category";
             this.Load += new System.EventHandler(this.add_category_Load);
